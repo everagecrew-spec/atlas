@@ -51,7 +51,7 @@ class OpenWakeWordDetector(WakeWordDetector):
     def wait_for_wake_word(self) -> bool:
         audio_queue: queue.Queue = queue.Queue()
 
-        def callback(indata, frames, time_info, status) -> None:  # pragma: no cover - device callback
+        def callback(indata, frames, _time_info, status) -> None:  # pragma: no cover - device callback
             if status:
                 self._logger.warning("event=wake_word_audio_status status=%s", status)
             audio_queue.put(indata.copy())

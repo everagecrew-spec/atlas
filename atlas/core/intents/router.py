@@ -71,8 +71,10 @@ class IntentRouter:
                 ),
             )
 
-        commandish = any(keyword in normalized.lower() for keyword in ("turn", "switch", "set", "dim", "lights", "thermostat"))
-        if commandish:
+        has_action_indicators = any(
+            keyword in normalized.lower() for keyword in ("turn", "switch", "set", "dim", "lights", "thermostat")
+        )
+        if has_action_indicators:
             return Intent(
                 kind="clarify",
                 confidence=0.45,

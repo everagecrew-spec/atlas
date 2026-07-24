@@ -41,7 +41,7 @@ class VADUtteranceListener(UtteranceListener):
         heard_speech = False
         started = time.monotonic()
 
-        def callback(indata, frames_count, time_info, status) -> None:  # pragma: no cover - device callback
+        def callback(indata, _frames_count, _time_info, status) -> None:  # pragma: no cover - device callback
             if status:
                 self._logger.warning("event=listener_audio_status status=%s", status)
             audio_queue.put(bytes(indata))
