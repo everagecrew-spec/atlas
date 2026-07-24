@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "atlas-assistant"
+version = "0.1.0"
+description = "Local-first, privacy-preserving personal voice assistant starter"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{ name = "everagecrew-spec" }]
+dependencies = [
+  "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+audio = [
+  "numpy>=1.26",
+  "sounddevice>=0.4.6",
+  "webrtcvad-wheels>=2.0.14",
+]
+wakeword = [
+  "openwakeword>=0.6.0",
+]
+stt = [
+  "faster-whisper>=1.1.0",
+]
+full = [
+  "numpy>=1.26",
+  "sounddevice>=0.4.6",
+  "webrtcvad-wheels>=2.0.14",
+  "openwakeword>=0.6.0",
+  "faster-whisper>=1.1.0",
+]
+
+[project.scripts]
+atlas-daemon = "atlas.apps.daemon.main:main"
+
+[tool.setuptools.packages.find]
+include = ["atlas*"]

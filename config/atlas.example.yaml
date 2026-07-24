@@ -1,0 +1,51 @@
+env_file: .env
+
+audio:
+  wake_word: atlas
+  sample_rate: 16000
+  frame_ms: 30
+  silence_ms: 900
+  wake_threshold: 0.5
+  listen_timeout_s: 8.0
+  # Point this at a custom openWakeWord model once you train an "Atlas" wake word.
+  openwakeword_model_path:
+
+stt:
+  provider: faster_whisper
+  model: base.en
+  device: auto
+  compute_type: int8
+
+llm:
+  provider: ollama
+  host: http://127.0.0.1:11434
+  model: llama3.1:8b-instruct-q4_K_M
+  timeout_s: 30.0
+  system_prompt: >-
+    You are Atlas, a concise, thoughtful, privacy-first personal assistant.
+    Keep replies natural and brief.
+
+tts:
+  provider: piper
+  command: piper
+  # Swap to your Piper voice model path or alias.
+  voice:
+  extra_args: []
+
+runtime:
+  max_turn_history: 8
+  followup_window_s: 5.0
+  confirm_risky_actions: true
+  dry_run: false
+  log_level: INFO
+
+home_assistant:
+  url: http://homeassistant.local:8123
+  token_env_var: HOME_ASSISTANT_TOKEN
+  verify_ssl: true
+  lights:
+    living room: light.living_room
+    kitchen: light.kitchen
+  thermostats:
+    downstairs: climate.downstairs
+    bedroom: climate.bedroom
