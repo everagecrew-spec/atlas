@@ -17,7 +17,7 @@ responds with thoughtful, concise answers.
 
 Atlas should feel like talking to a trusted personal assistant:
 
-- private by default
-- context-aware
-- helpful without being verbose
-- capable across everyday tasks and smart home control
+- Private by default
+- Context-aware
+- Helpful without being verbose
+- Capable across everyday tasks and smart home control
